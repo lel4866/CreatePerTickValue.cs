@@ -43,13 +43,6 @@ namespace CreatePerTickValue
 
         static void Main(string[] args)
         {
-#if false
-            int i;
-            int dateL = datefmt.Length; // 8 for yyyyMMdd; 10 for mm/dd/yyyy
-            int dtL = dtfmt.Length;
-            
-            DateTime dt;
-#endif
             string row;
             DateTime lastDateTime = DateTime.MinValue;
             bool newDay = false;
@@ -94,7 +87,6 @@ namespace CreatePerTickValue
                             if (ticks.Count > 0)
                             {
                                 Parallel.ForEach(ticks, tick => ProcessTick(ticks, tick.index));
-
 
                                 // compute total value for day
                                 float cumValueOfDay = 0f;
@@ -157,7 +149,7 @@ namespace CreatePerTickValue
 
         static void ProcessTick(List<Tick> ticks, int index)
         {
-            // search forward until you eithe make or lose $100. Assume $50 per point
+            // search forward until you either make or lose $100. Assume $50 per point
             int phase = 0;
             float value = 0.0f;
             float maxValue = 0.0f;
